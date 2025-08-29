@@ -1,9 +1,9 @@
 ## Phase 1: Core Domain Implementation
-- [ ] Project Setup
-  - [ ] Initialize Git repository
-  - [ ] Set up Maven/Gradle project
-  - [ ] Create basic project structure
-  - [ ] Add README.md with project description
+- [x] Project Setup
+  - [x] Initialize Git repository
+  - [x] Set up Maven/Gradle project
+  - [x] Create basic project structure
+  - [x] Add README.md with project description
 
 - [ ] Core Domain Models
   - [ ] Create Book class with basic attributes
