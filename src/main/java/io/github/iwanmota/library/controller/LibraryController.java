@@ -3,6 +3,7 @@ package io.github.iwanmota.library.controller;
 import io.github.iwanmota.library.model.Book;
 import io.github.iwanmota.library.service.LibraryService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +27,7 @@ public class LibraryController {
         return libraryService.getAllBooks();
     }
 
-    @GetMapping("/api/books/add")
+    @PostMapping("/api/books/add")
     public void addBook(@RequestParam String title,
                         @RequestParam String author,
                         @RequestParam String description,
@@ -37,4 +38,10 @@ public class LibraryController {
         libraryService.addBook(new Book(title, author, description, ISBN, pages, year));
         //libraryService.addBook(book);
     }
+
+    @GetMapping("/api/books/search")
+    public List<Book> searchBook(@RequestParam String title){
+        return libraryService.lookUpBookByTitle(title);
+    }
+
 }
