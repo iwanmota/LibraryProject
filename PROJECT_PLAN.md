@@ -18,8 +18,8 @@ This project follows a gradual, week-by-week learning path to master Spring Boot
 - [x] Create Book class with basic attributes (title, author, isbn, description, pages, year)
 - [x] Implement toString(), equals(), and hashCode()
 - [x] Add unit tests for Book class
-- [ ] Create LibraryService with in-memory List
-- [ ] Implement basic operations (add/remove/find books)
+- [x] Create LibraryService with in-memory List
+- [x] Implement basic operations (add/remove/find books)
 - [ ] Add search functionality using Stream API
 
 **Key Focus**: Plain Java implementation without Spring annotations

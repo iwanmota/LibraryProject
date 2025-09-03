@@ -7,11 +7,11 @@ public class Book {
     private String title;
     private String author;
     private String description;
-    private int ISBN;
+    private String ISBN;
     private int pages;
     private int year;
     
-    public Book(String title, String author, String description, int ISBN, int pages, int year) {
+    public Book(String title, String author, String description, String ISBN, int pages, int year) {
         this.title = title;
         this.author = author;
         this.description = description;
@@ -28,7 +28,7 @@ public class Book {
     public String getDescription(){
         return this.description;
     }    
-    public int getISBN(){
+    public String getISBN(){
         return this.ISBN;
     }
     public int getPages(){
@@ -47,7 +47,7 @@ public class Book {
     public void setDescription(String description){
         this.description = description;
     }
-    public void setISBN(int ISBN){
+    public void setISBN(String ISBN){
         this.ISBN = ISBN;
     }
     public void setPages(int pages){
@@ -72,7 +72,7 @@ public class Book {
             this.author.equals(otherBook.author) &&
             this.title.equals(otherBook.title) &&
             this.description.equals(otherBook.description) &&
-            this.ISBN == otherBook.ISBN &&
+            this.ISBN.equals(otherBook.ISBN) &&
             this.pages == otherBook.pages &&
             this.year == otherBook.year
         ;
