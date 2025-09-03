@@ -1,19 +1,19 @@
 # Library Management System
 
-A personal library management system built with Spring Boot and Java 17. This project demonstrates modern Java development practices, Spring Boot features, and progressive enhancement from a simple console application to a full-featured web application.
+A personal library management system built with Spring Boot and Java 21. This project demonstrates modern Java development practices, Spring Boot features, and progressive enhancement from a simple console application to a full-featured web application.
 
 ## 🚀 Features
 
 - **Book Management**: Add, remove, and search books in your personal library
 - **RESTful API**: Modern REST endpoints for book operations
 - **Data Persistence**: JSON-based storage with plans for database integration
-- **Modern Java**: Utilizes Java 17 features, Stream API, and functional programming
+- **Modern Java**: Utilizes Java 21 features, Stream API, and functional programming
 - **Spring Boot**: Built on Spring Boot 3.5.5 for rapid development
 - **Lombok Integration**: Reduces boilerplate code with automatic generation
 
 ## 🛠️ Technology Stack
 
-- **Java 17** - Latest LTS version with modern language features
+- **Java 21** - Latest LTS version with modern language features
 - **Spring Boot 3.5.5** - Application framework and auto-configuration
 - **Spring Web** - RESTful web services
 - **Lombok** - Automatic code generation for POJOs
@@ -22,7 +22,7 @@ A personal library management system built with Spring Boot and Java 17. This pr
 
 ## 📋 Prerequisites
 
-- Java 17 or higher
+- Java 21 or higher
 - Maven 3.6+ (or use the included Maven wrapper)
 - IDE with Java support (IntelliJ IDEA, Eclipse, VS Code)
 

@@ -2,7 +2,7 @@
 
 ## Incremental Learning Approach
 
-This project follows a gradual, week-by-week learning path to master Spring Boot while building a functional library management system.
+This project follows a gradual, week-by-week learning path to master Spring Boot while building a functional library management system using Java 21.
 
 ---
 
@@ -11,7 +11,7 @@ This project follows a gradual, week-by-week learning path to master Spring Boot
 ### ✅ Project Setup
 - [x] Initialize Git repository
 - [x] Set up Maven project structure
-- [x] Configure Spring Boot
+- [x] Configure Spring Boot with Java 21
 - [x] Add README documentation
 
 ### 🔄 Core Domain Models (In Progress)
@@ -220,4 +220,4 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 4. **Focus on Understanding**: Learn what each annotation does
 5. **Keep It Working**: Maintain functional code throughout
 
-This approach ensures steady progress while building deep understanding of Spring Boot concepts.
+This approach ensures steady progress while building deep understanding of Spring Boot concepts using modern Java 21 features.
