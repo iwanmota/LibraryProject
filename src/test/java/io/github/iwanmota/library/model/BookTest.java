@@ -78,4 +78,10 @@ class BookTest {
     void testEqualsWithDifferentClass() {
         assertFalse(book.equals("Not a book"));
     }
+
+    @Test
+    void testHashCodeConsistency() {
+        Book identicalBook = new Book("1984", "George Orwell", "Dystopian novel", "978-0134685991", 328, 1949);
+        assertEquals(book.hashCode(), identicalBook.hashCode());
+    }
 }
