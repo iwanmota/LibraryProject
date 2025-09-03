@@ -1,5 +1,7 @@
 package io.github.iwanmota.library.model;
 
+import java.util.Objects;
+
 public class Book {
 
     private String title;
@@ -74,7 +76,11 @@ public class Book {
             this.pages == otherBook.pages &&
             this.year == otherBook.year
         ;
-        
+    }
+       
+    @Override
+    public int hashCode(){
+        return Objects.hash(author, title, description, ISBN, pages, year);
     }
 
 

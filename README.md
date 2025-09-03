@@ -75,6 +75,10 @@ LibraryProject/
 │   ├── main/
 │   │   ├── java/
 │   │   │   └── io/github/iwanmota/library/
+│   │   │       ├── model/
+│   │   │       │   └── Book.java
+│   │   │       ├── service/
+│   │   │       ├── controller/
 │   │   │       └── LibraryApplication.java
 │   │   └── resources/
 │   │       ├── application.properties
@@ -83,6 +87,8 @@ LibraryProject/
 │   └── test/
 │       └── java/
 │           └── io/github/iwanmota/library/
+│               ├── model/
+│               │   └── BookTest.java
 │               └── LibraryApplicationTests.java
 ├── target/
 ├── pom.xml
@@ -92,28 +98,39 @@ LibraryProject/
 
 ## 🎯 Development Roadmap
 
-This project follows a phased development approach:
+This project follows an **incremental learning approach** designed to gradually introduce Spring Boot concepts:
 
-### ✅ Phase 1: Project Setup
+### ✅ Week 1-2: Basic Structure (Plain Java)
 - [x] Initialize Git repository
 - [x] Set up Maven project structure
 - [x] Configure Spring Boot
-- [x] Add README documentation
+- [x] Create Book model with unit tests
+- [ ] Implement LibraryService with in-memory storage
 
-### 🔄 Phase 2: Core Domain (In Progress)
-- [ ] Implement Book entity with validation
-- [ ] Create Library management service
-- [ ] Add search and filtering capabilities
-- [ ] Implement basic CRUD operations
+### 🔄 Week 3-4: Spring Boot Basics (Current)
+- [ ] Add @Component annotations
+- [ ] Create basic REST controller
+- [ ] Learn dependency injection
+- [ ] Test with Postman/curl
 
-### 📅 Upcoming Phases
-- **Phase 3**: Data Persistence (JSON → Database)
-- **Phase 4**: REST API Development
-- **Phase 5**: Database Integration (H2 → JPA)
-- **Phase 6**: Comprehensive Testing
-- **Phase 7**: Security & Documentation
+### 📅 Upcoming Weeks
+- **Week 5-6**: File-based JSON persistence
+- **Week 7-8**: Validation & error handling
+- **Week 9-10**: Database integration (H2 → JPA)
+- **Week 11-12**: Advanced features & search
+- **Week 13-14**: Testing & documentation
 
-See [PROJECT_PLAN.md](PROJECT_PLAN.md) for detailed roadmap.
+See [PROJECT_PLAN.md](PROJECT_PLAN.md) for detailed weekly roadmap.
+
+## 🎓 Learning Philosophy
+
+This project is designed for **incremental learning**:
+
+1. **Start Simple**: Begin with plain Java classes
+2. **Add Spring Gradually**: Introduce annotations one at a time
+3. **Understand Each Step**: Learn what each feature does before moving on
+4. **Keep It Working**: Maintain functional code throughout
+5. **Test Early**: Write tests for each new feature
 
 ## 🔧 Configuration
 
@@ -168,7 +185,7 @@ Once the REST API is implemented, documentation will be available at:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Author
+## 👨💻 Author
 
 **Iwan Mota** - [GitHub](https://github.com/iwanmota)
 
