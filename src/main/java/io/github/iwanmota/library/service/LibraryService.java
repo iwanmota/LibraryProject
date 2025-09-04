@@ -5,11 +5,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class LibraryService {
-    private List<Book> books = new ArrayList<>();
+    private final List<Book> books;
 
     public LibraryService(){
         this.books = new ArrayList<>();
@@ -23,6 +22,11 @@ public class LibraryService {
     public List<Book> lookUpBookByTitle(String title){
         return this.books.stream()
                 .filter(x -> x.getTitle().equals(title))
+                .toList();
+    }
+    public List<Book> lookUpBookByIsbn(String isbn){
+        return this.books.stream()
+                .filter(x -> x.getISBN().equals(isbn))
                 .toList();
     }
     public List<Book> getAllBooks(){

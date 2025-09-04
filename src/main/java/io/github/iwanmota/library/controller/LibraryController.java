@@ -2,32 +2,25 @@ package io.github.iwanmota.library.controller;
 
 import io.github.iwanmota.library.model.Book;
 import io.github.iwanmota.library.service.LibraryService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1")
 public class LibraryController {
     private final LibraryService libraryService;
 
-    public LibraryController(){
-        this.libraryService = new LibraryService();
+    public LibraryController(LibraryService libraryService){
+        this.libraryService = libraryService;
     }
 
-//    @GetMapping("/")
-//    public String home(){
-//        return "Hello World";
-//    }
-
-    @GetMapping("/api/books")
+    @GetMapping("/books")
     public List<Book> getAllBooks(){
         return libraryService.getAllBooks();
     }
 
-    @PostMapping("/api/books/add")
+    @PostMapping("/books/add")
     public void addBook(@RequestParam String title,
                         @RequestParam String author,
                         @RequestParam String description,
@@ -36,12 +29,19 @@ public class LibraryController {
                         @RequestParam int year
                             ){
         libraryService.addBook(new Book(title, author, description, ISBN, pages, year));
-        //libraryService.addBook(book);
     }
 
-    @GetMapping("/api/books/search")
-    public List<Book> searchBook(@RequestParam String title){
-        return libraryService.lookUpBookByTitle(title);
-    }
+    @GetMapping("/books/search")
+    public List<Book> searchBooks(@RequestParam(name="title", required = false) String title,
+                                  @RequestParam(name="isbn", required = false) String isbn){
 
+        // This implementation prioritizes searching by isbn first
+        if(isbn != null) {
+            return libraryService.lookUpBookByIsbn(isbn);
+        }else if(title != null) {
+            return libraryService.lookUpBookByTitle(title);
+        }
+        //No valid parameter passed
+        return List.of();
+    }
 }

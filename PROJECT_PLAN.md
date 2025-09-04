@@ -14,13 +14,13 @@ This project follows a gradual, week-by-week learning path to master Spring Boot
 - [x] Configure Spring Boot with Java 21
 - [x] Add README documentation
 
-### 🔄 Core Domain Models (In Progress)
+### ✅ Core Domain Models (Completed)
 - [x] Create Book class with basic attributes (title, author, isbn, description, pages, year)
 - [x] Implement toString(), equals(), and hashCode()
 - [x] Add unit tests for Book class
 - [x] Create LibraryService with in-memory List
 - [x] Implement basic operations (add/remove/find books)
-- [ ] Add search functionality using Stream API
+- [x] Add search functionality using Stream API
 
 **Key Focus**: Plain Java implementation without Spring annotations
 
@@ -39,12 +39,12 @@ public class LibraryService {
 
 ## Week 3-4: Spring Boot Basics
 
-### 🔄 Spring Boot Integration
-- [ ] Add @Component to LibraryService
-- [ ] Learn dependency injection basics
-- [ ] Create simple REST controller
-- [ ] Test with Postman/curl
-- [ ] Understand Spring Boot auto-configuration
+### ✅ Spring Boot Integration (Completed)
+- [x] Add @Component to LibraryService
+- [x] Learn dependency injection basics
+- [x] Create simple REST controller
+- [x] Test with Postman/curl
+- [x] Understand Spring Boot auto-configuration
 
 **Key Focus**: Adding Spring annotations gradually
 
@@ -203,8 +203,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
 ## Success Metrics
 
-- **Week 2**: Working Book model with unit tests
-- **Week 4**: Basic REST API responding to requests
+- **Week 2**: ✅ Working Book model with unit tests
+- **Week 4**: ✅ Basic REST API responding to requests
 - **Week 6**: Data persisting to JSON file
 - **Week 8**: Proper error handling and validation
 - **Week 10**: Full database integration
