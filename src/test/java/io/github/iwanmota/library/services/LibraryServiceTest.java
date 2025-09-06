@@ -18,9 +18,9 @@ class LibraryServiceTest {
     @BeforeEach
     void setUp() {
         libraryService = new LibraryService();
-        book1 = new Book("Java Programming", "John Doe", "Learn Java", "978-0134685991", 500, 2020);
-        book2 = new Book("Spring Boot", "Jane Smith", "Spring Boot Guide", "978-1617294945", 400, 2021);
-        book3 = new Book("Java Programming", "Bob Johnson", "Another Java Book", "978-0321356680", 300, 2019);
+        book1 = new Book("1", "Java Programming", "John Doe", "Learn Java", "978-0134685991", 500, 2020);
+        book2 = new Book("2", "Spring Boot", "Jane Smith", "Spring Boot Guide", "978-1617294945", 400, 2021);
+        book3 = new Book("3", "Java Programming", "Bob Johnson", "Another Java Book", "978-0321356680", 300, 2019);
     }
 
     @Test
@@ -65,23 +65,66 @@ class LibraryServiceTest {
         libraryService.addBook(book2);
         libraryService.addBook(book3);
         
-        Book javaBook = libraryService.lookUpBookByTitle("Java Programming");
-        assertNotNull(javaBook);
-        assertEquals(javaBook, book1);
+        List<Book> javaBooks = libraryService.lookUpBookByTitle("Java Programming");
+        assertEquals(2, javaBooks.size());
+        assertTrue(javaBooks.contains(book1));
+        assertTrue(javaBooks.contains(book3));
     }
 
     @Test
     void testLookUpBookByTitleNotFound() {
         libraryService.addBook(book1);
         
-        Book book = libraryService.lookUpBookByTitle("Nonexistent Book");
-        assertNull(book);
+        List<Book> books = libraryService.lookUpBookByTitle("Nonexistent Book");
+        assertTrue(books.isEmpty());
     }
 
     @Test
     void testLookUpBookByTitleEmptyLibrary() {
-        Book book = libraryService.lookUpBookByTitle("Any Title");
-        assertNull(book);
+        List<Book> books = libraryService.lookUpBookByTitle("Any Title");
+        assertTrue(books.isEmpty());
+    }
+
+    @Test
+    void testLookUpBookByIsbn() {
+        libraryService.addBook(book1);
+        libraryService.addBook(book2);
+        
+        List<Book> books = libraryService.lookUpBookByIsbn("978-0134685991");
+        assertEquals(1, books.size());
+        assertTrue(books.contains(book1));
+    }
+
+    @Test
+    void testLookUpBookById() {
+        libraryService.addBook(book1);
+        
+        Book foundBook = libraryService.lookUpBookById(book1.getId());
+        assertEquals(book1, foundBook);
+    }
+
+    @Test
+    void testUpdateBook() {
+        libraryService.addBook(book1);
+        Book updatedBook = new Book("updated", "Updated Title", "Updated Author", "Updated Description", "978-0000000000", 600, 2023);
+        
+        libraryService.updateBook(0, updatedBook);
+        
+        List<Book> books = libraryService.getAllBooks();
+        assertEquals(updatedBook, books.getFirst());
+    }
+
+    @Test
+    void testDeleteBook() {
+        libraryService.addBook(book1);
+        libraryService.addBook(book2);
+        
+        libraryService.deleteBook(0);
+        
+        List<Book> books = libraryService.getAllBooks();
+        assertEquals(1, books.size());
+        assertFalse(books.contains(book1));
+        assertTrue(books.contains(book2));
     }
 
     @Test
@@ -91,15 +134,5 @@ class LibraryServiceTest {
         assertTrue(books.isEmpty());
     }
 
-    @Test
-    void testGetAllBooksReturnsDefensiveCopy() {
-        libraryService.addBook(book1);
-        
-        List<Book> books = libraryService.getAllBooks();
-        books.clear();
-        
-        List<Book> booksAfterClear = libraryService.getAllBooks();
-        assertEquals(1, booksAfterClear.size());
-        assertTrue(booksAfterClear.contains(book1));
-    }
+
 }

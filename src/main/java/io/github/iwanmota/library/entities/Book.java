@@ -5,14 +5,16 @@ import java.util.Objects;
 
 public class Book {
 
+    private String id;
     private String title;
     private String author;
     private String description;
     private String ISBN;
     private int pages;
     private int year;
-    
-    public Book(String title, String author, String description, String ISBN, int pages, int year) {
+
+    public Book(String id, String title, String author, String description, String ISBN, int pages, int year) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.description = description;
@@ -20,6 +22,15 @@ public class Book {
         this.pages = pages;
         this.year = year;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return this.title;
     }    
