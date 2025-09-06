@@ -19,6 +19,10 @@ public class LibraryService {
         }
     }
 
+    public void updateBook(int index, Book book){
+        this.books.set(index, book);
+    }
+
     public Book lookUpBookByTitle(String title){
         return this.books.stream()
                 .filter(x -> x.getTitle().equalsIgnoreCase(title))

@@ -34,13 +34,25 @@ public class LibraryController {
     @PostMapping("/books/add")
     public void addBook(@RequestBody Book newBook) {
         boolean isNotPresent = libraryService.getAllBooks().stream()
-                .noneMatch(book -> book.getTitle().equals(newBook.getTitle()));
+                .noneMatch(book -> book.getTitle().equalsIgnoreCase(newBook.getTitle()));
         if (isNotPresent) {
             libraryService.addBook(newBook);
         } else {
             throw new IllegalArgumentException("Book already exists");
         }
     }
+
+    @PutMapping("/books/update/{title}")
+    public void updateBook(@PathVariable String title, @RequestBody Book updatedBook){
+        for(int i=0; i < libraryService.getAllBooks().size(); i++){
+            Book book = libraryService.getAllBooks().get(i);
+            if(book.getTitle().equalsIgnoreCase(title)){
+                libraryService.updateBook(i, updatedBook);
+                return;
+            }
+        }
+    }
+
 
     @GetMapping("/books/search")
     public Book searchBooks(@RequestParam(name="title", required = false) String title,
