@@ -23,6 +23,11 @@ public class LibraryService {
         this.books.set(index, book);
     }
 
+    public void deleteBook(int index){
+        this.books.remove(index);
+
+    }
+
     public Book lookUpBookByTitle(String title){
         return this.books.stream()
                 .filter(x -> x.getTitle().equalsIgnoreCase(title))
@@ -36,7 +41,7 @@ public class LibraryService {
                 .orElse(null);
     }
     public List<Book> getAllBooks(){
-        return new ArrayList<>(this.books);
+        return this.books;
     }
 
 }

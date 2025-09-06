@@ -44,15 +44,19 @@ public class LibraryController {
 
     @PutMapping("/books/update/{title}")
     public void updateBook(@PathVariable String title, @RequestBody Book updatedBook){
-        for(int i=0; i < libraryService.getAllBooks().size(); i++){
-            Book book = libraryService.getAllBooks().get(i);
-            if(book.getTitle().equalsIgnoreCase(title)){
-                libraryService.updateBook(i, updatedBook);
-                return;
-            }
-        }
+        libraryService.getAllBooks().stream()
+                .filter(book -> book.getTitle().equalsIgnoreCase(title))
+                .findFirst()
+                .ifPresent(book -> libraryService.updateBook(libraryService.getAllBooks().indexOf(book), updatedBook));
     }
 
+    @DeleteMapping("/books/delete/{title}")
+    public void deleteBook(@PathVariable String title){
+        libraryService.getAllBooks().stream()
+                .filter(book -> book.getTitle().equalsIgnoreCase(title))
+                .findFirst()
+                .ifPresent(book -> libraryService.deleteBook(libraryService.getAllBooks().indexOf(book)));
+    }
 
     @GetMapping("/books/search")
     public Book searchBooks(@RequestParam(name="title", required = false) String title,
