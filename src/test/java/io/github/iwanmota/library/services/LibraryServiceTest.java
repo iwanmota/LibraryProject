@@ -1,6 +1,6 @@
-package io.github.iwanmota.library.service;
+package io.github.iwanmota.library.services;
 
-import io.github.iwanmota.library.model.Book;
+import io.github.iwanmota.library.entities.Book;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -65,24 +65,23 @@ class LibraryServiceTest {
         libraryService.addBook(book2);
         libraryService.addBook(book3);
         
-        List<Book> javaBooks = libraryService.lookUpBookByTitle("Java Programming");
-        assertEquals(2, javaBooks.size());
-        assertTrue(javaBooks.contains(book1));
-        assertTrue(javaBooks.contains(book3));
+        Book javaBook = libraryService.lookUpBookByTitle("Java Programming");
+        assertNotNull(javaBook);
+        assertEquals(javaBook, book1);
     }
 
     @Test
     void testLookUpBookByTitleNotFound() {
         libraryService.addBook(book1);
         
-        List<Book> books = libraryService.lookUpBookByTitle("Nonexistent Book");
-        assertTrue(books.isEmpty());
+        Book book = libraryService.lookUpBookByTitle("Nonexistent Book");
+        assertNull(book);
     }
 
     @Test
     void testLookUpBookByTitleEmptyLibrary() {
-        List<Book> books = libraryService.lookUpBookByTitle("Any Title");
-        assertTrue(books.isEmpty());
+        Book book = libraryService.lookUpBookByTitle("Any Title");
+        assertNull(book);
     }
 
     @Test

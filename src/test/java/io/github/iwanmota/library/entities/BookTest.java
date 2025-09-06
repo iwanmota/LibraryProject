@@ -1,4 +1,4 @@
-package io.github.iwanmota.library.model;
+package io.github.iwanmota.library.entities;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;

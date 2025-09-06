@@ -1,6 +1,6 @@
-package io.github.iwanmota.library.service;
+package io.github.iwanmota.library.services;
 
-import io.github.iwanmota.library.model.Book;
+import io.github.iwanmota.library.entities.Book;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -19,15 +19,17 @@ public class LibraryService {
         }
     }
 
-    public List<Book> lookUpBookByTitle(String title){
+    public Book lookUpBookByTitle(String title){
         return this.books.stream()
-                .filter(x -> x.getTitle().equals(title))
-                .toList();
+                .filter(x -> x.getTitle().equalsIgnoreCase(title))
+                .findFirst()
+                .orElse(null);
     }
-    public List<Book> lookUpBookByIsbn(String isbn){
+    public Book lookUpBookByIsbn(String isbn){
         return this.books.stream()
-                .filter(x -> x.getISBN().equals(isbn))
-                .toList();
+                .filter(x -> x.getTitle().equalsIgnoreCase(isbn))
+                .findFirst()
+                .orElse(null);
     }
     public List<Book> getAllBooks(){
         return new ArrayList<>(this.books);

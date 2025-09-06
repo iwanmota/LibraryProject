@@ -1,4 +1,5 @@
-package io.github.iwanmota.library.model;
+package io.github.iwanmota.library.entities;
+
 
 import java.util.Objects;
 
@@ -68,7 +69,7 @@ public class Book {
         if(obj == null || this.getClass() != obj.getClass()) return false;
 
         Book otherBook = (Book) obj;
-        return 
+        return
             this.author.equals(otherBook.author) &&
             this.title.equals(otherBook.title) &&
             this.description.equals(otherBook.description) &&
@@ -77,7 +78,7 @@ public class Book {
             this.year == otherBook.year
         ;
     }
-       
+
     @Override
     public int hashCode(){
         return Objects.hash(author, title, description, ISBN, pages, year);
