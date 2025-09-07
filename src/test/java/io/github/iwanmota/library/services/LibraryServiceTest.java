@@ -18,9 +18,9 @@ class LibraryServiceTest {
     @BeforeEach
     void setUp() {
         libraryService = new LibraryService();
-        book1 = new Book("1", "Java Programming", "John Doe", "Learn Java", "978-0134685991", 500, 2020);
-        book2 = new Book("2", "Spring Boot", "Jane Smith", "Spring Boot Guide", "978-1617294945", 400, 2021);
-        book3 = new Book("3", "Java Programming", "Bob Johnson", "Another Java Book", "978-0321356680", 300, 2019);
+        book1 = new Book("a1b2c3d4", "Java Programming", "John Doe", "Learn Java", "978-0-321-56384-2", 500, 2020);
+        book2 = new Book("ff8844e2", "Spring Boot", "Jane Smith", "Spring Boot Guide", "978-1-484-23147-5", 400, 2021);
+        book3 = new Book("12345678", "Java Programming", "Bob Johnson", "Another Java Book", "0-13-149505-0", 300, 2019);
     }
 
     @Test
@@ -90,7 +90,7 @@ class LibraryServiceTest {
         libraryService.addBook(book1);
         libraryService.addBook(book2);
         
-        List<Book> books = libraryService.lookUpBookByIsbn("978-0134685991");
+        List<Book> books = libraryService.lookUpBookByIsbn("978-0-321-56384-2");
         assertEquals(1, books.size());
         assertTrue(books.contains(book1));
     }
@@ -106,8 +106,8 @@ class LibraryServiceTest {
     @Test
     void testUpdateBook() {
         libraryService.addBook(book1);
-        Book updatedBook = new Book("updated", "Updated Title", "Updated Author", "Updated Description", "978-0000000000", 600, 2023);
-        
+        Book updatedBook = new Book("dcba9876", "Updated Title", "Updated Author", "Updated Description", "978-0-596-52068-7", 600, 2023);
+
         libraryService.updateBook(0, updatedBook);
         
         List<Book> books = libraryService.getAllBooks();

@@ -1,12 +1,20 @@
 package io.github.iwanmota.library.services;
 
 import io.github.iwanmota.library.entities.Book;
+import io.github.iwanmota.library.exceptions.BookErrorResponse;
+import io.github.iwanmota.library.exceptions.BookNotFoundException;
+import io.github.iwanmota.library.requests.BookRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.OptionalInt;
+import java.util.stream.IntStream;
 
 @Component
 public class LibraryService {
@@ -44,7 +52,26 @@ public class LibraryService {
         return this.books.stream()
                 .filter(x -> x.getId().equalsIgnoreCase(id))
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new BookNotFoundException("Book Not Found, Id: " + id));
+    }
+    public Book updateBookById(String id, BookRequest bookRequest) {
+        OptionalInt indexOptional =  IntStream.range(0, this.books.size())
+                .filter(i -> this.books.get(i).getId().equalsIgnoreCase(id))
+                .findFirst();
+        if(indexOptional.isPresent()){
+            Book book = new Book(id,
+                    bookRequest.getTitle(),
+                    bookRequest.getAuthor(),
+                    bookRequest.getDescription(),
+                    bookRequest.getISBN(),
+                    bookRequest.getPages(),
+                    bookRequest.getYear());
+            this.books.set(indexOptional.getAsInt(), book);
+            return book;
+        }
+        else {
+            throw new BookNotFoundException("Book Not Found, Id: " + id);
+        }
     }
 
     public List<Book> getAllBooks(){
@@ -63,7 +90,7 @@ public class LibraryService {
                 if (hex.length() == 1) hexString.append('0');
                 hexString.append(hex);
             }
-            return hexString.substring(0, 6);
+            return hexString.substring(0, 8);
         } catch (NoSuchAlgorithmException e) {
             return String.valueOf(input.hashCode()).replace("-", "");
         }

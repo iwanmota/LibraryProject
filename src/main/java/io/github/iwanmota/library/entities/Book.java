@@ -5,15 +5,29 @@ import java.util.Objects;
 
 public class Book {
 
+//    public static final String ISBN_FORMAT_EXPRESSION = "^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$";
+    public static final String ID_FORMAT_EXPRESSION = "^[0-9A-Fa-f]{8}$";
+
+
+    //@Pattern(regexp = ID_FORMAT_EXPRESSION, message = "Must be an 8-digit hexadecimal value")
     private String id;
+
     private String title;
     private String author;
     private String description;
+
+//    @Pattern(regexp=ISBN_FORMAT_EXPRESSION, message="Invalid ISBN format")
     private String ISBN;
     private int pages;
     private int year;
 
     public Book(String id, String title, String author, String description, String ISBN, int pages, int year) {
+//        if (!ISBN.matches(ISBN_FORMAT_EXPRESSION)) {
+//            throw new IllegalArgumentException("Invalid ISBN format: " + ISBN);
+//        }
+//        if (!id.matches(ID_FORMAT_EXPRESSION)) {
+//            throw new IllegalArgumentException("Invalid ID format: " + id);
+//        }
         this.id = id;
         this.title = title;
         this.author = author;
